@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
     const data = JSON.stringify(this.model)
     //console.log(data)
-    this.http.post('http://localhost:4000/user/login', data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
+    this.http.post('/product/user/login', data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
 
       this.result = res
       if (this.result.code == 3000 && this.result.data.length != 0) {//成功返回的code

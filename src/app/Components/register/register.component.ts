@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     else {
 
       const data = JSON.stringify(this.model)
-      this.http.post('http://localhost:4000/user/register', data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
+      this.http.post('/user/register', data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
         console.log("Response", res);
         this.result = res
         if (this.result.success == false) this.passwordalert = "Your Account Already Exists, Please Login!"

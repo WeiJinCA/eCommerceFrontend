@@ -37,7 +37,7 @@ export class CollectComponent implements OnInit {
       "email": this.email
     };
 
-    this.http.get('http://localhost:4000/user/get/' + this.email).subscribe((res) => {
+    this.http.get('/user/get/' + this.email).subscribe((res) => {
       this.items = res;
       console.log(this.items.data[0].favorites);
       this.arr = this.items.data[0].favorites;

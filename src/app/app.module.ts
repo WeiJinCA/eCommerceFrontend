@@ -41,7 +41,12 @@ import { CollectComponent } from './Components/collect/collect.component';
     HttpClientModule,
     AgGridModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'API_BASE_URL',
+      useValue: 'http://3.93.240.26/'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

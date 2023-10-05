@@ -39,7 +39,7 @@ export class ItemComponent implements OnInit {
     };
 
     //Modify favorites status for user
-    this.http.put('http://localhost:4000/user/favorites', data).subscribe((res) => {
+    this.http.put('/user/favorites', data).subscribe((res) => {
       console.log(res);
     });
   }
@@ -53,7 +53,7 @@ export class ItemComponent implements OnInit {
     this.loggeduser = JSON.parse(localStorage.getItem('user')!);
 
     if (this.loggeduser != null && this.loggeduser[0]) {
-      this.http.get('http://localhost:4000/user/get/' + this.loggeduser[0].email).subscribe((res) => {
+      this.http.get('/user/get/' + this.loggeduser[0].email).subscribe((res) => {
         this.items = res;
         this.arr = this.items.data[0].favorites;
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Item } from '../../Model/item.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-album',
@@ -17,13 +18,16 @@ export class AlbumComponent implements OnInit {
   items: any = {}
 
   fileToUpload: File = new File([], 'dummy');
+  apiUrl = environment.apiBaseUrl;
 
   handleFileInput(files: FileList) {
+
+
     this.fileToUpload = files.item(0)!;
     console.log(this.fileToUpload);
     const formData: FormData = new FormData();
     formData.append('Image', this.fileToUpload);
-    this.http.post('http://localhost:4000/upload', formData).subscribe((res) => {
+    this.http.post(`${this.apiUrl}/upload`, formData).subscribe((res) => {
       console.log(res);
     });
   }
@@ -33,7 +37,7 @@ export class AlbumComponent implements OnInit {
     //window.scrollTo(0, 0);
     // this.product_id = this.route.snapshot.params['id'];
     // console.log("Product Id", this.product_id);
-    this.http.get('http://localhost:4000/product/getAll').subscribe((res) => {
+    this.http.get(`${this.apiUrl}/product/getAll`).subscribe((res) => {
       this.items = res;
       console.log(this.items.data);
     })
